@@ -13,7 +13,7 @@ Poradnik na dzień dzisiejszy obsługuje wyłącznie  Polskę i oprogramowanie Q
 	Nie potrzebujesz żadnego dodatkowego oprogramowania. 
 	Nie potrzebujesz przechodzić oficjalnych poradników QGIS, ten poradnik przeprowadzi cię krok po kroku po wszystkch kolejnych kliknięciach. QGIS to bardzo zaawansowane środowisko, na potrzeby WMCP nie potrzeba się go uczyć, użyjemy tylko niewielkiej części jego funkcji.
  2. Włącz QGIS. Po włączeniu powinien wyglądać mniej więcej tak:
-   ![](QGIS-look.png)
+   ![](./images/pl-tutorials/QGIS-look.png)
 
 # 2. Zainstaluj wtyczkę BDOT10k
 
