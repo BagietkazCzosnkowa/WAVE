@@ -22,7 +22,7 @@ Poradnik na dzień dzisiejszy obsługuje wyłącznie  Polskę i oprogramowanie Q
    
    ![](./images/pl-tutorials/Plugins-Manage-and-Install.png)
    
- 2. W pol *Search ...* należy pisać BDOT10k i wbrać plugin o dokładnie tej nazwie. Autorem jest Maryla Jeż.
+ 2. W pole *Search ...* należy pisać BDOT10k i wbrać plugin o dokładnie tej nazwie. Autorem jest Maryla Jeż.
  
    ![](./images/pl-tutorials/BDOT10k-plugin.png)
    
