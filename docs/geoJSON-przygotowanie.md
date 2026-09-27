@@ -28,3 +28,8 @@ Poradnik na dzień dzisiejszy obsługuje wyłącznie  Polskę i oprogramowanie Q
    ![](./images/pl-tutorials/BDOT10k-plugin.png)
    
  3. Zainstaluj ten plugin i zamknij to okno, nie będziemy potrzebować więcej. 
+BDOT10k to Baza Danych Obiektów Terenowych w skali 1:10 000. Są to oficjalne dane udostepniane przez Główny Urząd Geodezji i Kartografii. Ten plugin to jeden ze sposobów, na pobranie ich. 
+# 3. Pobierz paczkę BDOT10k.
+Teraz musimy pobrać odpoweidnie dane. 
+1. U Na pasku górnmym pojawiły sie dwa przyciski, na zdjęciu zaznaczone czerwonym kólkiem.
+   ![](./images/pl-tutorials/QGIS-with-BDOT10k-plugin.png)
