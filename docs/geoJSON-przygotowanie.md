@@ -33,3 +33,24 @@ BDOT10k to Baza Danych Obiektów Terenowych w skali 1:10 000. Są to oficjalne d
 Teraz musimy pobrać odpoweidnie dane. 
 1. U Na pasku górnmym pojawiły sie dwa przyciski, na zdjęciu zaznaczone czerwonym kólkiem.
    ![](./images/pl-tutorials/QGIS-with-BDOT10k-plugin.png)
+   Otworzy się wtedy kolejne okno, należy tam wybrać interesujący nas powiat/powiaty.  U mnie wbieram część pojezierza warmińsko-mazurskiego. 
+2. ![](./images/pl-tutorials/BDOT10k-plugin-data-download.png)
+   Wybierczie folder pobierania danych. Ważne, żeby wybrać u góry opcję GPKG. 
+   Kliknij oppcję "Pobierz". Pobierze to folder/y .zip, należy go/je rozpakować
+3. Uwaga, po rozpakowaniu paczki .gpkg mają dość pokaźne rozmiary. Dla przykładu te cztery powiaty któ©e pobrałem to około 900MB. NA szczęście nie potrzebyjemy tego wszystkiego. Potrzebujemy z każdej paczki tylko kilku konkretnych wartw, resztę można usunąć. Potrzebujemy konkretnie:
+	- PL.PZGiK.341.BDOT10k.XXXX_OT_SWRS_L - sieć wodna - rzeki
+	- PL.PZGiK.341.BDOT10k.XXXX_OT_SWKN_L - sieć wodna - kanały
+	- PL.PZGiK.341.BDOT10k.XXXX_OT_SWRM_L - sieć wodna - rowy melioracyjne
+	- PL.PZGiK.341.BDOT10k.XXXX_OT_PTWP_A - pokrycie tereny - wodą powierzchniową (Najważniejsze)
+Reszę można spokojnie usunąć, nie są do niczego potrzebne w tym przypadku.
+Oto krótki skrytp w bash który usunie pozostałe pliki poza tymi czterema.
+`find . -maxdepth 1 -type f ! -name '*_OT_SWRS_L*' ! -name '*_OT_SWKN_L*' ! -name '*_OT_SWRM_L*' ! -name '*_OT_PTWP_A*' -delete`
+Aby go urzyć należy odpalić konsolę w Linuxie, wejść do katalogu w którym znajdują się rozpakowane pliki i wkleić w konsolę ten kod. 
+
+Wersja PowerShell (Konsoli Windows):
+`Get-ChildItem -File | Where-Object {
+    $_.Name -notlike '*_OT_SWRS_L*' -and
+    $_.Name -notlike '*_OT_SWKN_L*' -and
+    $_.Name -notlike '*_OT_SWRM_L*' -and
+    $_.Name -notlike '*_OT_PTWP_A*'
+} | Remove-Item`
