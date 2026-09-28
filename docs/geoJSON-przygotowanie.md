@@ -33,7 +33,9 @@ BDOT10k to Baza Danych Obiektów Terenowych w skali 1:10 000. Są to oficjalne d
 Teraz musimy pobrać odpoweidnie dane. 
 1. U Na pasku górnmym pojawiły sie dwa przyciski, na zdjęciu zaznaczone czerwonym kólkiem.
    ![](./images/pl-tutorials/QGIS-with-BDOT10k-plugin.png)
+   
    Otworzy się wtedy kolejne okno, należy tam wybrać interesujący nas powiat/powiaty.  U mnie wbieram część pojezierza warmińsko-mazurskiego. 
+   
 2. ![](./images/pl-tutorials/BDOT10k-plugin-data-download.png)
    Wybierczie folder pobierania danych. Ważne, żeby wybrać u góry opcję GPKG. 
    Kliknij oppcję "Pobierz". Pobierze to folder/y .zip, należy go/je rozpakować
@@ -44,13 +46,62 @@ Teraz musimy pobrać odpoweidnie dane.
 	- PL.PZGiK.341.BDOT10k.XXXX_OT_PTWP_A - pokrycie tereny - wodą powierzchniową (Najważniejsze)
 Reszę można spokojnie usunąć, nie są do niczego potrzebne w tym przypadku.
 Oto krótki skrytp w bash który usunie pozostałe pliki poza tymi czterema.
+
 `find . -maxdepth 1 -type f ! -name '*_OT_SWRS_L*' ! -name '*_OT_SWKN_L*' ! -name '*_OT_SWRM_L*' ! -name '*_OT_PTWP_A*' -delete`
+
 Aby go urzyć należy odpalić konsolę w Linuxie, wejść do katalogu w którym znajdują się rozpakowane pliki i wkleić w konsolę ten kod. 
 
 Wersja PowerShell (Konsoli Windows):
-`Get-ChildItem -File | Where-Object {
-    $_.Name -notlike '*_OT_SWRS_L*' -and
-    $_.Name -notlike '*_OT_SWKN_L*' -and
-    $_.Name -notlike '*_OT_SWRM_L*' -and
-    $_.Name -notlike '*_OT_PTWP_A*'
-} | Remove-Item`
+
+`Get-ChildItem -File | Where-Object { $_.Name -notlike '*_OT_SWRS_L*' -and $_.Name -notlike '*_OT_SWKN_L*' -and $_.Name -notlike '*_OT_SWRM_L*' -and $_.Name -notlike '*_OT_PTWP_A*' } | Remove-Item`
+
+# 4. Przugotuj projekt. 
+W QGIS kliknij dwa razy w New Empty Project.  Wyświetli się taki widok:
+
+![](./images/pl-tutorials/QGIS-empty-project.png)
+
+Następnie w górnym pasku wybierz opcję Layer -> Add Layer -> Add Vector Layer. 
+
+![](./images/pl-tutorials/QGIS-adding-layer.png)
+
+Pojawi się wtedy takie okienko:
+
+![](./images/pl-tutorials/QGIS-add-layer.png)
+
+W okienku Vector Dataset(s), kliknij trzy kropeczki i wybierz wszystkie potrzebne ci pliki gpkg, tokładnie te z tymi z dopiskami, które wypisałem wyżej. Potem kliknij Add i Close.
+Powtóż to dla każdego folderu.
+
+Następnie na panelu po lewej kliknij XYZ Tiles -> OpenStreetMap (2 razy). Powinna się wyświetlić mapa podkłądkowa OSM , jednak nałożona NA wszystki warstwy niżej.
+
+![](./images/pl-tutorials/QGIS-OSM-map.png)
+
+Aby ustawić to prawidłowo, kliknij View -> Panels i zaznacz Layers.
+Wyskoczy okienko, należy przesunąć warstwę OpenStreetMap na sam dół.
+
+![](./images/pl-tutorials/QGIS-Layer-Manager.png)
+
+# 5. Obróbka danych i dokładne przygotowanie misji
+
+Dalej pokaże to na przykładzie jeziora Gołdapiwo. 
+
+Porównaj kolor wybranego przez ciebie jeziora/rzeki/innego zbiornika wodnego/ i wybierz go na liście w panelu Layers. 
+Następnie na panelu górnym zaznacz ikonkę Select Features by Area or Single Click i kliknij na to jezioro, powinno zmienić kolor na żółty.
+
+![](./images/pl-tutorials/QGIS-lake-choosing.png)
+
+Następnie kliknij prawym przyciskiem myszy na zaznaczoną warstwę, wybierz Export -> Save Selected Features As ...
+
+![](./images/pl-tutorials/QGIS-lake-export.png)
+
+Nazwij plik jakkolwiek, jednak sugeruję nazwę 'mission_area'.
+Przesuń ją na samą górę. 
+
+Następnie upewnij się, że mission_area jest zaznaczona (żółta) i kliknij po kolei Vector- Geoprocessing Tolls -> Buffer
+Wyskoczy okienko specyfikacji buforu, proponuję takie ustawienia:
+- Distance: -10m
+- Segments: 20
+- Dissolve: zaznaczone
+- Reszty nie zmieniaj.
+
+![](./images/pl-tutorials/Buffer-settings.png)
+
