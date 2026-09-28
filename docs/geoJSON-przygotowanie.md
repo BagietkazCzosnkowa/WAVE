@@ -105,3 +105,28 @@ Wyskoczy okienko specyfikacji buforu, proponuję takie ustawienia:
 
 ![](./images/pl-tutorials/Buffer-settings.png)
 
+I zamknij okno.
+
+Następnie zaznacz warstwę buforu, i w panelu warstw i na mapie, i kliknij Vector -> Reaserch Tools -> Create Grid. Sugeruję zastępujące ustawienia:
+- Grid Extent: Wybierz Buffered, albo jakkolwiek nazwałeś warstwę ma której jest bufor.
+- Horizontal/Vertical Spaceing: 25 m. (dla mniejszych punktów pomiarowych będzie niewiarygodnie dużo)
+- Upewnij się, że Grid CRS to ESPG:2180
+- Reszty nie zmieniaj
+
+![](./images/pl-tutorials/Grid-Settings.png)
+
+Zamknij okno.
+
+Pojawią się punkty, ale na planie sześciokąta, a nie tylko na terenie jeziora. Trzeba teraz usunąć te poza jeziorem. 
+
+![](./images/pl-tutorials/point-unfilterd.png)
+
+Kliknij po kolei Vector -> Geoprocessing Tools -> Intersection
+Ustaw 
+- Input Layer: Grid (albo inną nazwę którą nadałeś siatce punktów)
+- Overlay Layer: Bufferes (albo inną nazwę którą nadałeś siatce punktów)
+I kliknij Run. UWAGA, to może trochę potrwać.
+
+![](./images/pl-tutorials/Intersection-Points.png)
+
+Już w zasadzie gotowe, pozostaje tylko wyeksportować odpowiednie dane, to jest warstwy Intersection, mission_area i buffered. 
