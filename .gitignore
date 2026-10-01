@@ -6,3 +6,12 @@
 /WAVE.md
 /WAVE architektura.canvas
 /sync-wave.sh
+
+.venv/
+__pycache__/
+*.pyc
+.idea/
+*.git/
+
+*.qgz
+
