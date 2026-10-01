@@ -116,21 +116,6 @@ Pojawi się panel. Należy przesunąć warstwę **OpenStreetMap** na sam dół.
 
 Dalej pokażę to na przykładzie jeziora Gołdapiwo.
 
-## CRS — układy współrzędnych
-
-W tym poradniku będziemy korzystać głównie z dwóch układów współrzędnych:
-
-- **EPSG:2180 — ETRS89 / Poland CS92** — używaj go podczas wykonywania operacji geometrycznych na danych w Polsce, takich jak bufory, siatki i pomiary odległości. Współrzędne są podawane w metrach.
-    
-- **EPSG:4326 — WGS 84** — używaj go przede wszystkim wtedy, gdy potrzebujesz współrzędnych geograficznych w postaci długości i szerokości geograficznej, np. do wymiany danych z urządzeniami GPS lub systemami korzystającymi z WGS 84.
-    
-
-W tym poradniku **EPSG:2180 jest używany do przygotowania geometrii i siatki**, ponieważ chcemy podawać odległości bezpośrednio w metrach.
-
-Jeżeli QGIS wyświetla dane w innym układzie współrzędnych, nie oznacza to automatycznie, że trzeba je przekształcać. QGIS może wykonywać transformację „w locie” podczas wyświetlania warstw. Ważne jest, aby narzędzia wykonujące operacje geometryczne pracowały w odpowiednim układzie współrzędnych.
-
----
-
 Porównaj kolor wybranego przez siebie jeziora, rzeki lub innego zbiornika wodnego i wybierz go na liście w panelu **Layers**.
 
 Następnie na górnym pasku zaznacz ikonkę **Select Features by Area or Single Click** i kliknij na to jezioro. Powinno zmienić kolor na żółty.
