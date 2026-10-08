@@ -7,11 +7,15 @@
 /WAVE architektura.canvas
 /sync-wave.sh
 
+# Pliki Pycharm
 .venv/
 __pycache__/
 *.pyc
 .idea/
-*.git/
 
+# Inne
+*.git/
 *.qgz
 
+# Znacznik 'nie wysyłaj, tymczasowe/prywatne'
+*--prv--*
