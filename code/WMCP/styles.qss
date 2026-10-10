@@ -1,0 +1,45 @@
+/*
+ * styles - Qt Style Sheet
+ * Created: 10/10/26
+ *
+ * QSS Toolkit Quick Tips:
+ * - Press Ctrl+Space (Cmd+Space) for intelligent auto-completion
+ * - Use Ctrl+/ (Cmd+/) to comment/uncomment code blocks
+ * - Use the QSS Colors panel and editor context menu to save or insert colors
+ */
+
+/* Add your QSS styles here */
+
+    QWidget {
+        background-color: #0B1220;
+        color: #E2EAF4;
+        font-size: 12pt;
+    }
+
+    QPushButton {
+        background-color: #104A8E;
+        color: #FFFFFF;
+        font-size: 15px;
+        border: 1px solid #29445F;
+        border-radius: 4px;
+        padding: 6px 12px;
+    }
+
+    QPushButton:hover {
+        background-color: #1766B1;
+    }
+
+    QPushButton:pressed {
+        background-color: #0B3565;
+    }
+
+    QPushButton:disabled {
+        background-color: #26394B;
+        color: #7F91A5;
+    }
+
+    QLabel{
+        font-size: 15px;
+        color: #FFFFFF;
+
+    }
