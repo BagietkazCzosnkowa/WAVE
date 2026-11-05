@@ -1,1 +1,1 @@
-TOP_MESSAGE = 'WAVE is a innovative solution for scientific data collection on various bodies of water.'
+TOP_MESSAGE = 'WAVE is an innovative solution for scientific data collection on various bodies of water.'
