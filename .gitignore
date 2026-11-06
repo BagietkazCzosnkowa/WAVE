@@ -16,6 +16,8 @@ __pycache__/
 # Inne
 *.git/
 *.qgz
+*IYEC*
 
 # Znacznik 'nie wysyłaj, tymczasowe/prywatne'
 *--prv--*
+

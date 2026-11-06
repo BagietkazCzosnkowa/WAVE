@@ -1,5 +1,7 @@
 import sys
 import geopandas as gpd
+import geojson
+import files_lines
 from enums import Alignments, QtButtonTypes
 from WMCP import texts
 from pathlib import Path
@@ -43,7 +45,7 @@ def create_combo_box(object_name: str):
     box.setObjectName(object_name)
 
 
-class WMCP(QtWidgets.QMainWindow):
+class WMCPWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
 
@@ -94,32 +96,27 @@ class WMCP(QtWidgets.QMainWindow):
         self.tabs.addTab(main_tab, "Setup and data import")
 
     def data_import(self):
-        QtWidgets.QMessageBox.information(self, 'Import information',
-                                          'For now WMCP works ONLY with .gpkg files, make sure, not to import any other, it won`t work')
-        file_path, selected_filter = QtWidgets.QFileDialog.getOpenFileName(self, "Import Geospatial data", "",
-                                                                           "GeoPackage Files (*.gpkg)")
+        # QtWidgets.QMessageBox.information(self, 'Import information',
+        #                                   'For now WMCP works ONLY with .gpkg files, make sure, not to import any other, it will not work')
+        file_path, selected_filter = QtWidgets.QFileDialog.getOpenFileName(self, "Import Geospatial data",
+                                                                           files_lines.test_mission_line,
+                                                                           "GeoJSON Files (*.geojson)")
         if not file_path:
             return
-        self.mission_data = process_imports(file_path, selected_filter)
+        self.mission_data = process_imports(file_path)
         print(self.mission_data, flush=True)
 
-        # ==============
-        # Second window
-        # ==============
 
-
-def process_imports(file_path: str, selected_filter: str):
-    try:
-        mission_data = gpd.read_file(file_path)
-        return mission_data
-    except 'GeoPackage' not in selected_filter:
-        raise TypeError('Data not in GeoJSON format(told ya)')
+def process_imports(file_path: str):
+    with open(file_path, 'r') as file:
+        mission_data = geojson.load(file)
+    return mission_data
 
 
 app = QtWidgets.QApplication(sys.argv)
 style_path = Path(__file__).parent / 'styles.qss'
 app.setStyleSheet(style_path.read_text(encoding='utf-8'))
-window = WMCP()
+window = WMCPWindow()
 window.show()
 
 sys.exit(app.exec())
