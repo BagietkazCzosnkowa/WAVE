@@ -20,4 +20,4 @@ __pycache__/
 
 # Znacznik 'nie wysyłaj, tymczasowe/prywatne'
 *--prv--*
-
+*__prv__*
